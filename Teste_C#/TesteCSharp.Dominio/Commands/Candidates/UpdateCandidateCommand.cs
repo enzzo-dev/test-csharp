@@ -27,7 +27,7 @@ namespace TesteCSharp.Dominio.Commands.Candidates
             ModifyDate = DateTime.Now;
         }
 
-        public Guid IdCandidate { get; set; }
+        public Guid IdCandidate { get; private set; }
 
         public string Name { get; private set; }
         public string Surname { get; private set; }

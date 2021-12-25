@@ -2,6 +2,7 @@
 using Flunt.Validations;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using TesteCSharp.Comum;
@@ -36,13 +37,41 @@ namespace TesteCSharp.Domains.Entidades
         public string Company { get; private set; }
         public string Job { get; private set; }
         public string Description { get; private set; }
-        public float Salary { get; private set; }
+        public decimal Salary { get; private set; }
         public DateTime BeginDate { get; private set; }
         public DateTime EndDate { get; set; }
         public DateTime ModifyDate { get; private set; }
 
         //Compositions
+        [ForeignKey("Candidates")]
         public Guid IdCandidate { get; set; }
         public Candidates Candidates { get; set; }
+
+        public void UpdateExperience(string company, string job, string description, decimal salary, DateTime beginDate, DateTime endDate)
+        {
+            AddNotifications(
+              new Contract<Notification>()
+              .Requires()
+              .IsNotEmpty(company, "Company", "Company could't be empty!")
+              .IsNotEmpty(job, "Job", "Job cannot be empty!")
+              .IsNotEmpty(description, "Description", "Description cannot be empty!")
+              .IsNotNull(salary, "Salary", "Salary could't be null")
+              .IsNotNull(beginDate, "BeginDate", "Begin date cannot be null")
+              .IsNotNull(endDate, "EndDate", "End Date Can't be null")
+
+          );
+
+
+            if (IsValid)
+            {
+                Company = company;
+                Job = job;
+                Description = description;
+                Salary = salary;
+                BeginDate = beginDate;
+                EndDate = endDate;
+                ModifyDate = DateTime.Now;
+            }
+        }
     }
 }

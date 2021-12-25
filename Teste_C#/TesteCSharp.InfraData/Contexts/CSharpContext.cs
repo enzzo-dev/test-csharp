@@ -60,7 +60,8 @@ namespace TesteCSharp.InfraData.Contexts
 
             #region Mapeamento da tabela de experiências dos candidatos
 
-                
+            //Id para recebimento
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.Id);
 
             #endregion
 

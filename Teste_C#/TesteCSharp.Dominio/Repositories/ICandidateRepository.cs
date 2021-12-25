@@ -29,7 +29,7 @@ namespace TesteCSharp.Dominio.Repositories
         /// <summary>
         /// Delete a Candidate
         /// </summary>
-        void Delete(Guid idCandidate);
+        void Delete(Candidates candidates);
 
         /// <summary>
         /// Find a candidate in the system with id
@@ -40,6 +40,8 @@ namespace TesteCSharp.Dominio.Repositories
         /// Find a candidate in the system with email
         /// </summary>
         Candidates FindWithEmail(string Email);
+
+        public List<Candidates> BuscarTodos();
 
 
     }

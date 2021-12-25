@@ -13,8 +13,4 @@
     <ProjectReference Include="..\TesteCSharp\TesteCSharp.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Handlers\ExperienceCandidatesHandle\" />
-  </ItemGroup>
-
 </Project>

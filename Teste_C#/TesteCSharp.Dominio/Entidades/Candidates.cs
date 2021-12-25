@@ -13,6 +13,9 @@ namespace TesteCSharp.Dominio.Entidades
 {
    public class Candidates : Base
     {
+
+       
+
         public Candidates(string name, string surname, string email, DateTime birthdate)
         {
             AddNotifications(
@@ -63,6 +66,7 @@ namespace TesteCSharp.Dominio.Entidades
                 Name = name;
                 Surname = surname;
                 Birthdate = birthDate;
+                ModifyDate = DateTime.Now;
             }
         }
 

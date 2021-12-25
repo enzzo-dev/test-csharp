@@ -12,7 +12,7 @@ using TesteCSharp.Dominio.Repositories;
 
 namespace TesteCSharp.Dominio.Handlers.CandidatesHandle
 {
-    class RegisterCandidateHandler : Notifiable<Notification>, IHandler<RegisterCandidateCommand>
+    public class RegisterCandidateHandler : Notifiable<Notification>, IHandler<RegisterCandidateCommand>
     {
 
         //Dependency Injection
