@@ -17,7 +17,7 @@ namespace TesteCSharp.Dominio.Commands.CandidateExperience
 
         }
 
-        public UpdateExperienceCommand(string company, string job, string description, float salary, DateTime beginDate, DateTime modifyDate)
+        public UpdateExperienceCommand(string company, string job, string description, decimal salary, DateTime beginDate, DateTime modifyDate)
         {
             Company = company;
             Job = job;
@@ -30,7 +30,7 @@ namespace TesteCSharp.Dominio.Commands.CandidateExperience
         public string Company { get; private set; }
         public string Job { get; private set; }
         public string Description { get; private set; }
-        public float Salary { get; private set; }
+        public decimal  Salary { get; private set; }
         public DateTime BeginDate { get; private set; }
         public DateTime EndDate { get; set; }
         public DateTime ModifyDate { get; private set; }

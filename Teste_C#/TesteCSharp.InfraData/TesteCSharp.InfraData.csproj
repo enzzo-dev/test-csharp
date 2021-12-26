@@ -13,4 +13,8 @@
     <ProjectReference Include="..\TesteCSharp.Dominio\TesteCSharp.Dominio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>

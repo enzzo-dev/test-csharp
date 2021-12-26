@@ -2,6 +2,7 @@
 using Flunt.Validations;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using TesteCSharp.Comum;
@@ -12,7 +13,7 @@ namespace TesteCSharp.Domains.Entidades
     public class CandidateExperience : Base
     {
 
-        public CandidateExperience(string company, string job, string description, float salary, DateTime beginDate, Guid idCandidate)
+        public CandidateExperience(string company, string job, string description, decimal salary, DateTime beginDate, Guid idCandidate)
         {
             AddNotifications(
                 new Contract<Notification>()
@@ -36,12 +37,14 @@ namespace TesteCSharp.Domains.Entidades
         public string Company { get; private set; }
         public string Job { get; private set; }
         public string Description { get; private set; }
-        public float Salary { get; private set; }
+        public decimal Salary { get; private set; }
         public DateTime BeginDate { get; private set; }
         public DateTime EndDate { get; set; }
         public DateTime ModifyDate { get; private set; }
 
         //Compositions
+
+        //[ForeignKey("Candidates")]
         public Guid IdCandidate { get; set; }
         public Candidates Candidates { get; set; }
     }
