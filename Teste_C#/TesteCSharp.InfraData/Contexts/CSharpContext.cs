@@ -41,15 +41,17 @@ namespace TesteCSharp.InfraData.Contexts
             modelBuilder.Entity<Candidates>().Property(x => x.Surname).HasColumnType("varchar(150)");
             modelBuilder.Entity<Candidates>().Property(x => x.Surname).IsRequired();
 
+
+            //BirthDate
+            modelBuilder.Entity<Candidates>().Property(x => x.Birthdate).HasColumnType("DateTime");
+            modelBuilder.Entity<Candidates>().Property(x => x.Birthdate).IsRequired();
+
             //Email
             modelBuilder.Entity<Candidates>().Property(x => x.Email).HasMaxLength(250);
             modelBuilder.Entity<Candidates>().Property(x => x.Email).HasColumnType("varchar(250)");
             modelBuilder.Entity<Candidates>().Property(x => x.Email).IsRequired();
             modelBuilder.Entity<Candidates>().HasIndex(u => u.Email).IsUnique();
 
-            //BirthDate
-            modelBuilder.Entity<Candidates>().Property(x => x.Birthdate).HasColumnType("DateTime");
-            modelBuilder.Entity<Candidates>().Property(x => x.Birthdate).IsRequired();
 
             //ModifyDate
             modelBuilder.Entity<Candidates>().Property(x => x.ModifyDate).HasColumnType("DateTime");
@@ -60,7 +62,41 @@ namespace TesteCSharp.InfraData.Contexts
 
             #region Mapeamento da tabela de experiências dos candidatos
 
-                
+            //Id para recebimento
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.Id);
+
+            //Company
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.Company).HasMaxLength(100);
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.Company).HasColumnType("varchar(100)");
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.Company).IsRequired();
+
+            //Job
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.Job).HasMaxLength(100);
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.Job).HasColumnType("varchar(100)");
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.Job).IsRequired();
+
+            //Description
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.Description).HasMaxLength(4000);
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.Description).HasColumnType("varchar(4000)");
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.Description).IsRequired();
+
+            //Salary
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.Salary).HasColumnType("numeric(8, 2)");
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.Salary).IsRequired();
+
+            //BeginDate
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.BeginDate).HasColumnType("DateTime");
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.BeginDate).IsRequired();
+
+            //EndDate
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.EndDate).HasColumnType("DateTime");
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.EndDate).IsRequired();
+
+            //ModifyDate
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.ModifyDate).HasColumnType("DateTime");
+
+            //InsertDate
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.Data).HasColumnType("DateTime");
 
             #endregion
 

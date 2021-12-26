@@ -43,9 +43,35 @@ namespace TesteCSharp.Domains.Entidades
         public DateTime ModifyDate { get; private set; }
 
         //Compositions
-
-        //[ForeignKey("Candidates")]
+        [ForeignKey("Candidates")]
         public Guid IdCandidate { get; set; }
         public Candidates Candidates { get; set; }
+
+        public void UpdateExperience(string company, string job, string description, decimal salary, DateTime beginDate, DateTime endDate)
+        {
+            AddNotifications(
+              new Contract<Notification>()
+              .Requires()
+              .IsNotEmpty(company, "Company", "Company could't be empty!")
+              .IsNotEmpty(job, "Job", "Job cannot be empty!")
+              .IsNotEmpty(description, "Description", "Description cannot be empty!")
+              .IsNotNull(salary, "Salary", "Salary could't be null")
+              .IsNotNull(beginDate, "BeginDate", "Begin date cannot be null")
+              .IsNotNull(endDate, "EndDate", "End Date Can't be null")
+
+          );
+
+
+            if (IsValid)
+            {
+                Company = company;
+                Job = job;
+                Description = description;
+                Salary = salary;
+                BeginDate = beginDate;
+                EndDate = endDate;
+                ModifyDate = DateTime.Now;
+            }
+        }
     }
 }

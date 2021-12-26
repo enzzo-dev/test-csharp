@@ -12,7 +12,7 @@ using TesteCSharp.Dominio.Repositories;
 
 namespace TesteCSharp.Dominio.Handlers.CandidatesHandle
 {
-    class RegisterCandidateHandler : Notifiable<Notification>, IHandler<RegisterCandidateCommand>
+    public class RegisterCandidateHandler : Notifiable<Notification>, IHandler<RegisterCandidateCommand>
     {
 
         //Dependency Injection
@@ -44,7 +44,7 @@ namespace TesteCSharp.Dominio.Handlers.CandidatesHandle
 
             if (usuarioExiste != null)
             {
-                return new GenericCommandResult(false, "E-mail already registered", "Enter another email!");
+                return new GenericCommandResult(false, "E-mail already registered", command.Notifications);
             }
             //Salvar no banco -> repository.RegisterCandidate();
             Candidates c1 = new Candidates

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -7,6 +8,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TesteCSharp.Dominio.Handlers.CandidatesHandle;
+using TesteCSharp.Dominio.Handlers.ExperienceCandidatesHandle;
+using TesteCSharp.Dominio.Repositories;
+using TesteCSharp.InfraData.Contexts;
+using TesteCSharp.InfraData.Repositories;
 
 namespace TesteCSharp
 {
@@ -23,6 +29,30 @@ namespace TesteCSharp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<CSharpContext>(x => x.UseSqlServer(Configuration.GetConnectionString("StringConnection")));
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromHours(2);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
+            //Injeções de dependências
+            #region Candidates
+            services.AddTransient<ICandidateRepository, CandidateRepository>();
+            services.AddTransient<RegisterCandidateHandler, RegisterCandidateHandler>();
+            services.AddTransient<UpdateCandidateHandler, UpdateCandidateHandler>();
+            services.AddTransient<DeleteCandidateHandler, DeleteCandidateHandler>();
+            #endregion
+            #region Candidates Experiences
+            services.AddTransient<ICandidateExperienceRepository, CandidateExperienceRepository>();
+            services.AddTransient<RegisterExperienceCandidateHandler,RegisterExperienceCandidateHandler>();
+            services.AddTransient<UpdateExperienceCandidateHandler, UpdateExperienceCandidateHandler>();
+            services.AddTransient<DeleteExperienceCandidateHandler, DeleteExperienceCandidateHandler>();
+            #endregion
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +71,8 @@ namespace TesteCSharp
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

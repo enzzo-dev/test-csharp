@@ -21,15 +21,10 @@ namespace TesteCSharp.Dominio.Repositories
         /// </summary>
         void Update( Candidates candidateUpdated);
 
-        /// <summary>
-        /// List all candidates in the system
-        /// </summary>
-        public ICollection<Candidates> ListAll();
-
-        /// <summary>
+     
         /// Delete a Candidate
         /// </summary>
-        void Delete(Guid idCandidate);
+        void Delete(Candidates candidates);
 
         /// <summary>
         /// Find a candidate in the system with id
@@ -40,6 +35,11 @@ namespace TesteCSharp.Dominio.Repositories
         /// Find a candidate in the system with email
         /// </summary>
         Candidates FindWithEmail(string Email);
+
+        /// <summary>
+        /// List all candidates in the system
+        /// </summary>
+        public List<Candidates> BuscarTodos();
 
 
     }

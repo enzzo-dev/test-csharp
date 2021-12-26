@@ -17,7 +17,8 @@ namespace TesteCSharp.Comum
             Data = DateTime.Now;
         }
 
-        //[Key]
+
+        [Key]
         public Guid Id { get; set; }
 
         public DateTime Data { get; set; }
