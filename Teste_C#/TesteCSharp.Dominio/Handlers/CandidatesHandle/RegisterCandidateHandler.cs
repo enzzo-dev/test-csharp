@@ -45,14 +45,19 @@ namespace TesteCSharp.Dominio.Handlers.CandidatesHandle
             if (usuarioExiste != null)
             {
                 return new GenericCommandResult(false, "E-mail already registered", command.Notifications);
+
             }
+
+          
+
             //Salvar no banco -> repository.RegisterCandidate();
             Candidates c1 = new Candidates
             (
                 command.Name,
                 command.Surname,
-                command.Email,
-                command.Birthdate
+                command.Birthdate,
+                command.Email
+                
             );
 
             if (!c1.IsValid)

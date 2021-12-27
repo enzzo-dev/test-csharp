@@ -1,0 +1,61 @@
+﻿@model TesteCSharp.Dominio.Entidades.Candidates
+
+
+@{
+    ViewData["Title"] = "Details of candidates";
+}
+
+<h1>Detalhes</h1>
+
+<div>
+    <h4>Equipamentos</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Birthdate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ModifyDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <form action="@Url.Action("RegisterExperience")" method="POST">
+
+        <input  id="company" class="form-control" type="text" value="" name="Company" />
+        <input  id="job" class="form-control" type="text" value="" name="Job" />
+        <input  id="description" class="form-control" type="text" value="" name="Description" />
+        <input  id="salary" class="form-control" type="number" value="" name="Salary" />
+        <input  id="beginDate" class="form-control" type="date" value="" name="BeginDate" />
+
+
+        <input type="hidden" id="idCandidate" value="@Html.DisplayFor(model => model.Id)" name="IdCandidate" />
+
+        <button class="btn-primary btn-dark" type="submit">Comentar</button>
+    </form>
+
+    @if (ViewBag.Comentarios != null)
+    {
+
+        @foreach (var item in ViewBag.Comentarios)
+        {
+            <p>@item.Comentario</p>
+        }
+    }
+
+
+    <a asp-action="Index">Voltar</a>
+
+</div>

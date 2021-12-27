@@ -38,9 +38,9 @@ namespace TesteCSharp.Domains.Entidades
         public string Job { get; private set; }
         public string Description { get; private set; }
         public decimal Salary { get; private set; }
-        public DateTime BeginDate { get; private set; }
+        public DateTime BeginDate { get; set; }
         public DateTime EndDate { get; set; }
-        public DateTime ModifyDate { get; private set; }
+        public DateTime ModifyDate { get; set; }
 
         //Compositions
         [ForeignKey("Candidates")]

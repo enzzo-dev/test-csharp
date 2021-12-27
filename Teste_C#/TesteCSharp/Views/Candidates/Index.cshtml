@@ -1,0 +1,67 @@
+﻿
+@model List<TesteCSharp.Dominio.Entidades.Candidates>
+
+@{
+    ViewData["Title"] = "List of candidates";
+}
+
+<h1>Candidatos</h1>
+
+<p>
+    <a asp-action="RegisterCandidate">Cadastrar novo candidato</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Surname
+            </th>
+            <th>
+                BirthDate
+            </th>
+            <th>
+                Email
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Birthdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <a asp-action="DetailsCandidate" asp-route-id="@item.Id">Detalhes</a>
+
+
+
+                    <a id="deletar" style="margin-left: 10px" asp-action="Delete" asp-route-id="@item.Id">
+                        Deletar
+                    </a>
+
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+}

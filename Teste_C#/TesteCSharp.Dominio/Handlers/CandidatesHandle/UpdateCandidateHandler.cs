@@ -48,6 +48,8 @@ namespace TesteCSharp.Dominio.Handlers.CandidatesHandle
                 );
             }
 
+
+
             //Realizamos a alteraçãom no command, para verificar os dados
             usuarioEncontrado.UpdateCandidate
             (

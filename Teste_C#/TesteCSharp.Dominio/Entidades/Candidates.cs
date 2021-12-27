@@ -14,32 +14,31 @@ namespace TesteCSharp.Dominio.Entidades
    public class Candidates : Base
     {
 
-       
-
-        public Candidates(string name, string surname, string email, DateTime birthdate)
+        public Candidates(string name, string surname,DateTime birthdate, string email)
         {
             AddNotifications(
                 new Contract<Notification>()
                 .Requires()
                 .IsNotEmpty(name, "Name", "Name could't be empty!")
                 .IsNotEmpty(surname, "Surname", "Last name cannot be empty!")
+                .IsNotNull(birthdate, "Birthdate", "The birth date could't be a null value")
                 .IsEmail(email, "Email", "The email format is incorrect!")
-                .IsNotNull(birthdate, "Birthdate", "The date of birth cannot be empty!")
+                
 
             );
 
             Name = name;
             Surname = surname;
-            Email = email;
             Birthdate = birthdate;
+            Email = email;
+           
             
         }
 
         public string Name { get; private set; }
         public string Surname { get; private set; }
-        public DateTime Birthdate { get; private set; }
+        public DateTime Birthdate { get; set; }
         public string Email { get; private set; }
-
         public DateTime ModifyDate { get; set; }
 
         //Compositions

@@ -25,24 +25,27 @@ namespace TesteCSharp.InfraData.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("BeginDate")
-                        .HasColumnType("DateTime");
+                    b.Property<string>("BeginDate")
+                        .IsRequired()
+                        .HasColumnType("varchar(48)");
 
                     b.Property<string>("Company")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<DateTime>("Data")
-                        .HasColumnType("DateTime");
+                    b.Property<string>("Data")
+                        .IsRequired()
+                        .HasColumnType("varchar(48)");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(4000)
                         .HasColumnType("varchar(4000)");
 
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("DateTime");
+                    b.Property<string>("EndDate")
+                        .IsRequired()
+                        .HasColumnType("varchar(48)");
 
                     b.Property<Guid>("IdCandidate")
                         .HasColumnType("uniqueidentifier");
@@ -52,8 +55,9 @@ namespace TesteCSharp.InfraData.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("DateTime");
+                    b.Property<string>("ModifyDate")
+                        .IsRequired()
+                        .HasColumnType("varchar(48)");
 
                     b.Property<decimal>("Salary")
                         .HasColumnType("numeric(8,2)");
@@ -71,19 +75,22 @@ namespace TesteCSharp.InfraData.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("Birthdate")
-                        .HasColumnType("DateTime");
+                    b.Property<string>("Birthdate")
+                        .IsRequired()
+                        .HasColumnType("varchar(48)");
 
-                    b.Property<DateTime>("Data")
-                        .HasColumnType("DateTime");
+                    b.Property<string>("Data")
+                        .IsRequired()
+                        .HasColumnType("varchar(48)");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("varchar(250)");
 
-                    b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("DateTime");
+                    b.Property<string>("ModifyDate")
+                        .IsRequired()
+                        .HasColumnType("varchar(48)");
 
                     b.Property<string>("Name")
                         .IsRequired()

@@ -21,6 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TesteCSharp.Comum\TesteCSharp.Comum.csproj" />
+    <ProjectReference Include="..\TesteCSharp.Dominio\TesteCSharp.Dominio.csproj" />
     <ProjectReference Include="..\TesteCSharp.InfraData\TesteCSharp.InfraData.csproj" />
   </ItemGroup>
 

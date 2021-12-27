@@ -78,7 +78,7 @@ namespace TesteCSharp
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Candidates}/{action=Index}/{id?}");
             });
         }
     }

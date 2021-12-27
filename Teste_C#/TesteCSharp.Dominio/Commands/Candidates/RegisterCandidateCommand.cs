@@ -17,11 +17,11 @@ namespace TesteCSharp.Dominio.Commands.Candidates
 
         }
 
-        public RegisterCandidateCommand(string name, string surname, DateTime birthdate, string email)
+        public RegisterCandidateCommand(string name, string surname,DateTime birthDate, string email)
         {
             Name = name;
             Surname = surname;
-            Birthdate = birthdate;
+            Birthdate = birthDate;
             Email = email;
         }
 

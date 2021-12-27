@@ -14,10 +14,10 @@ namespace TesteCSharp.InfraData.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     Surname = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false),
-                    Birthdate = table.Column<DateTime>(type: "DateTime", nullable: false),
+                    Birthdate = table.Column<string>(type: "varchar(48)", nullable: false),
                     Email = table.Column<string>(type: "varchar(250)", maxLength: 250, nullable: false),
-                    ModifyDate = table.Column<DateTime>(type: "DateTime", nullable: false),
-                    Data = table.Column<DateTime>(type: "DateTime", nullable: false)
+                    ModifyDate = table.Column<string>(type: "varchar(48)", nullable: false),
+                    Data = table.Column<string>(type: "varchar(48)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,11 +33,11 @@ namespace TesteCSharp.InfraData.Migrations
                     Job = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "varchar(4000)", maxLength: 4000, nullable: false),
                     Salary = table.Column<decimal>(type: "numeric(8,2)", nullable: false),
-                    BeginDate = table.Column<DateTime>(type: "DateTime", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "DateTime", nullable: false),
-                    ModifyDate = table.Column<DateTime>(type: "DateTime", nullable: false),
+                    BeginDate = table.Column<string>(type: "varchar(48)", nullable: false),
+                    EndDate = table.Column<string>(type: "varchar(48)", nullable: false),
+                    ModifyDate = table.Column<string>(type: "varchar(48)", nullable: false),
                     IdCandidate = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Data = table.Column<DateTime>(type: "DateTime", nullable: false)
+                    Data = table.Column<string>(type: "varchar(48)", nullable: false)
                 },
                 constraints: table =>
                 {

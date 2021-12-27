@@ -29,6 +29,8 @@ namespace TesteCSharp.InfraData.Contexts
 
             #region Mapeamento da tabela de candidatos
 
+
+         
             modelBuilder.Entity<Candidates>().Property(x => x.Id);
 
             //Name
@@ -43,8 +45,8 @@ namespace TesteCSharp.InfraData.Contexts
 
 
             //BirthDate
-            modelBuilder.Entity<Candidates>().Property(x => x.Birthdate).HasColumnType("DateTime");
-            modelBuilder.Entity<Candidates>().Property(x => x.Birthdate).IsRequired();
+            modelBuilder.Entity<Candidates>().Property(x => x.Birthdate).HasColumnType("varchar");
+            
 
             //Email
             modelBuilder.Entity<Candidates>().Property(x => x.Email).HasMaxLength(250);
@@ -54,10 +56,10 @@ namespace TesteCSharp.InfraData.Contexts
 
 
             //ModifyDate
-            modelBuilder.Entity<Candidates>().Property(x => x.ModifyDate).HasColumnType("DateTime");
+            modelBuilder.Entity<Candidates>().Property(x => x.ModifyDate).HasColumnType("varchar");
 
             //InsertDate
-            modelBuilder.Entity<Candidates>().Property(x => x.Data).HasColumnType("DateTime");
+            modelBuilder.Entity<Candidates>().Property(x => x.Data).HasColumnType("varchar");
             #endregion
 
             #region Mapeamento da tabela de experiências dos candidatos
@@ -85,18 +87,18 @@ namespace TesteCSharp.InfraData.Contexts
             modelBuilder.Entity<CandidateExperience>().Property(x => x.Salary).IsRequired();
 
             //BeginDate
-            modelBuilder.Entity<CandidateExperience>().Property(x => x.BeginDate).HasColumnType("DateTime");
-            modelBuilder.Entity<CandidateExperience>().Property(x => x.BeginDate).IsRequired();
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.BeginDate).HasColumnType("varchar");
+          
 
             //EndDate
-            modelBuilder.Entity<CandidateExperience>().Property(x => x.EndDate).HasColumnType("DateTime");
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.EndDate).HasColumnType("varchar");
             modelBuilder.Entity<CandidateExperience>().Property(x => x.EndDate).IsRequired();
 
             //ModifyDate
-            modelBuilder.Entity<CandidateExperience>().Property(x => x.ModifyDate).HasColumnType("DateTime");
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.ModifyDate).HasColumnType("varchar");
 
             //InsertDate
-            modelBuilder.Entity<CandidateExperience>().Property(x => x.Data).HasColumnType("DateTime");
+            modelBuilder.Entity<CandidateExperience>().Property(x => x.Data).HasColumnType("varchar");
 
             #endregion
 

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteCSharp.Comum", "..\Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteCSharp.Dominio", "..\TesteCSharp.Dominio\TesteCSharp.Dominio.csproj", "{B1022C75-9CE4-4872-A6BF-998BB10AD3B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteCSharp.InfraData", "..\TesteCSharp.InfraData\TesteCSharp.InfraData.csproj", "{6C6A2112-C41F-40CF-91F4-55E920C9BFE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteCSharp.InfraData", "..\TesteCSharp.InfraData\TesteCSharp.InfraData.csproj", "{6C6A2112-C41F-40CF-91F4-55E920C9BFE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
