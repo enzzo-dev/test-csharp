@@ -29,7 +29,7 @@ namespace TesteCSharp.Dominio.Repositories
         /// <summary>
         /// Find a candidate in the system with id
         /// </summary>
-        Candidates FindWithId(Guid idCandidate);
+        Candidates FindWithId(Guid? idCandidate);
 
         /// <summary>
         /// Find a candidate in the system with email

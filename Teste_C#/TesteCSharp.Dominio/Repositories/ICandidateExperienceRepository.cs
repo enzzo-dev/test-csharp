@@ -12,13 +12,15 @@ namespace TesteCSharp.Dominio.Repositories
 
         public List<CandidateExperience> BuscarTodos();
 
+        public List<CandidateExperience> ListById(Guid? id);
+
         void RegisterExperience(CandidateExperience newExperience);
 
         void UpdateExperience(CandidateExperience updateExperience);
 
         void Delete(CandidateExperience candidate);
 
-        public CandidateExperience FindWithId(Guid IdCandidate);
+        public CandidateExperience FindWithId(Guid? IdCandidate);
 
         public CandidateExperience FindWithNameCandidate(string NameCandidate);
 

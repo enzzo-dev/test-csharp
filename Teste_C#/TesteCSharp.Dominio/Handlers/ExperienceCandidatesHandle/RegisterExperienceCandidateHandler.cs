@@ -56,6 +56,7 @@ namespace TesteCSharp.Dominio.Handlers.ExperienceCandidatesHandle
                command.Description,
                command.Salary,
                command.BeginDate,
+               command.EndDate,
                command.IdCandidate
 
             );

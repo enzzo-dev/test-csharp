@@ -28,7 +28,9 @@ namespace TesteCSharp.InfraData.Repositories
 
         public void Delete(Candidates candidates)
         {
-            _context.Candidates.Remove(FindWithId(candidates.Id));
+            var userFinded = FindWithId(candidates.Id);
+
+            _context.Candidates.Remove(userFinded);
             _context.SaveChanges();
         }
 
@@ -37,7 +39,7 @@ namespace TesteCSharp.InfraData.Repositories
             return _context.Candidates.FirstOrDefault(e => e.Email == email);
         }
 
-        public Candidates FindWithId(Guid idCandidate)
+        public Candidates FindWithId(Guid? idCandidate)
         {
             return _context.Candidates.FirstOrDefault(e => e.Id == idCandidate);
         }

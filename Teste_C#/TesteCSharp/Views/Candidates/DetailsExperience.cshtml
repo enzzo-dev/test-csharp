@@ -1,38 +1,50 @@
-﻿@model TesteCSharp.Dominio.Entidades.Candidates
-
+﻿@model TesteCSharp.Domains.Entidades.CandidateExperience
 
 @{
-    ViewData["Title"] = "Details of candidates";
+    ViewData["Title"] = "Details of experiences ||";
 }
 
-<h2>Detalhes do candidato</h2>
+<h1>Detalhes das experiências do candidato</h1>
 
 <div>
+    <h4>Equipamentos</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Company)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Company)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Surname)
+            @Html.DisplayNameFor(model => model.Job)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Surname)
+            @Html.DisplayFor(model => model.Job)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Birthdate)
+            @Html.DisplayNameFor(model => model.Description)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Birthdate)
+            @Html.DisplayFor(model => model.Description)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.Salary)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Email)
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BeginDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BeginDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EndDate)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Data)
@@ -49,7 +61,9 @@
     </dl>
 </div>
 <div>
+    <a asp-action="DeleteExperience" asp-route-id="@Model.Id" style="border:none; padding: 8px 10px;margin-bottom: 20px" class="btn btn-primary">Deletar Experiência</a>
 
+    <form action="@Url.Action("UpdateExperience")" method="POST">
 
         <label for="Company" class="control-label">Company</label>
         <input style="margin: 20px 0px;width: 300px;height: 35px" id="company" class="form-control" type="text" value="" name="Company" />
@@ -77,40 +91,19 @@
 
 
 
-        <input type="hidden" id="idCandidate" value="@Html.DisplayFor(model => model.Id)" name="IdCandidate" />
+        <input type="hidden" id="idCandidate" value="@Html.DisplayFor(model => model.IdCandidate)" name="IdCandidate" />
+        <input type="hidden" id="idExperience" value="@Html.DisplayFor(model => model.Id)" name="IdExperience" />
 
-        <button style="border:none; padding: 8px 10px" class="btn btn-primary" id="btnAdicionar" type="submit">Cadastrar experiência</button>
-
-    @if (ViewBag.Experiences != null)
-    {
-    <div style=" display: flex; flex-direction: row; flex-flow: wrap; width: 100%; height: auto; margin-bottom: 80px;" class="exp">
-        @foreach (var item in ViewBag.Experiences)
-        {
-            <div  style="width: 20rem; margin-top: 50px;margin-right: 30px" class="card">
-                <div class="card-body">
-                    <h5 class="card-title">@item.Company</h5>
-                    <p class="card-text">@item.Job</p>
-                    <p class="card-text">@item.Description</p>
-                    <p class="card-text">@item.Salary</p>
-                    <p class="card-text">@item.BeginDate
-                    <p class="card-text">@item.EndDate</p>
-                    <a asp-action="DetailsExperience" asp-route-id="@item.Id" class="btn btn-primary">Ver mais...</a>
-                </div>
-            </div>
-
-        }
+        <button style="border:none; padding: 8px 10px;margin-bottom: 20px" class="btn btn-primary" id="btnAdicionar" type="submit">Atualizar experiência</button>
+    </form>
     </div>
-      
-    }
+    <a asp-action="DetailsCandidate" asp-route-id="@Model.IdCandidate">Voltar</a>
 
-
-    <a asp-action="Index">Voltar</a>
-
-</div>
-@section Scripts{
-    <script>
+    @section Scripts{
+        <script>
         $("#btnAdicionar").click(function () {
             var dataExperience = {
+                Id: $("#idExperience").val(),
                 Company: $("#company").val(),
                 Job: $('#job').val(),
                 Description: $("#description").val(),
@@ -119,10 +112,10 @@
                 EndDate: $("#endDate").val(),
                 idCandidate: $("#idCandidate").val()
             }
-         var URL = '@Url.Action("CreateExperience")'
+         var URL = '@Url.Action("UpdateExperience")'
                 $.ajax({
                     url: URL,
-                    type: "POST",
+                    type: "Update",
                     data: dataExperience,
                     success: function (dados) {
                             $("#company").val('')
@@ -135,5 +128,5 @@
                 });
         });
 
-    </script>
-}
+        </script>
+    }

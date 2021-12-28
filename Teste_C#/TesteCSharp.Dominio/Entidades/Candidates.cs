@@ -42,7 +42,7 @@ namespace TesteCSharp.Dominio.Entidades
         public DateTime ModifyDate { get; set; }
 
         //Compositions
-        public IReadOnlyCollection<CandidateExperience> Experiences { get { return _experiences; } }
+        public IReadOnlyCollection<CandidateExperience> Experiences { get;  set; }
 
         //Para alterar as experiências dos candidatos, precisamos de uma lista de apoio
 

@@ -35,7 +35,7 @@ namespace TesteCSharp.Dominio.Handlers.CandidatesHandle
                 );
             }
 
-            var empresaBuscada = _candidateRepository.FindWithId(command.IdCandidate);
+            var empresaBuscada = _candidateRepository.FindWithId(command.Id);
 
             if (empresaBuscada == null)
             {

@@ -19,17 +19,17 @@ namespace TesteCSharp.Dominio.Commands.Candidates
 
         public DeleteCandidateCommand(Guid idCandidate)
         {
-            IdCandidate = idCandidate;
+            Id = idCandidate;
         }
 
-        public Guid IdCandidate { get; set; }
+        public Guid Id { get; set; }
 
         public void Validar()
         {
             AddNotifications(
                 new Contract<Notification>()
                 .Requires()
-                .IsNotNull(IdCandidate, "IdCandidate", "Candidate cannot be empty!")
+                .IsNotNull(Id, "IdCandidate", "Candidate cannot be empty!")
             );
         }
     }

@@ -31,9 +31,17 @@ namespace TesteCSharp.InfraData.Repositories
             _context.SaveChanges();
         }
 
-        public CandidateExperience FindWithId(Guid IdCandidate)
+        public CandidateExperience FindWithId(Guid? IdCandidate)
         {
             return _context.CandidateExperience.FirstOrDefault(e => e.Id == IdCandidate);
+        }
+
+        public List<CandidateExperience> ListById(Guid? Id)
+        {
+
+            var exp = _context.CandidateExperience.Where(x => x.IdCandidate == Id).ToList();
+
+            return exp;
         }
 
         public CandidateExperience FindWithNameCandidate(string NameCandidate)

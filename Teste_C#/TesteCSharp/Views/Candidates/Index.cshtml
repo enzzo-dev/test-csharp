@@ -32,36 +32,52 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Surname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Birthdate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    <a asp-action="DetailsCandidate" asp-route-id="@item.Id">Detalhes</a>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+                
+            </td>
+            <td>
 
+                <a asp-action="DetailsCandidate" asp-route-id="@item.Id">Detalhes</a>
 
+                <a style="margin-left: 10px" asp asp-action="DeleteCandidate" asp-route-id="@item.Id">Deletar</a>
 
-                    <a id="deletar" style="margin-left: 10px" asp-action="Delete" asp-route-id="@item.Id">
-                        Deletar
-                    </a>
-
-
-
-                </td>
-            </tr>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
 
+@section Scripts{
+    <script>
+        $("#deletar").click(function (event) {
+            event.preventDefault();
+    console.log($("#idCandidate").val())
 
+    var URL = '@Url.Action("DeleteCandidate")'
+        $.ajax({
+            url: URL,
+            type: "DELETE",
+            data: $("#idCandidate").val(),
+            success: function (dados) {
+                window.location.href = "../Candidates/Index"
+            },
+            error: function (error) {
+                console.log(error),
+                    window.alert('Não foi realizado o envio do Id')
+            }
+        });
+                            });
 
+    </script>
 }
