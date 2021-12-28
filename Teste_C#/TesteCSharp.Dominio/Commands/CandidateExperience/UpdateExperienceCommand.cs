@@ -17,15 +17,15 @@ namespace TesteCSharp.Dominio.Commands.CandidateExperience
 
         }
 
-        public UpdateExperienceCommand(string company, string job, string description, decimal salary, DateTime beginDate, DateTime modifyDate, Guid idCandidate, Guid idCandidateExperience)
+        public UpdateExperienceCommand(string company, string job, string description, decimal salary, DateTime beginDate, DateTime endDate,DateTime modifyDate, Guid idCandidate, Guid idCandidateExperience)
         {
             Company = company;
             Job = job;
             Description = description;
             Salary = salary;
             BeginDate = beginDate;
+            EndDate = endDate;
             ModifyDate = DateTime.Now;
-            IdCandidate = idCandidate;
             IdCandidateExperience = idCandidateExperience;
         }
 

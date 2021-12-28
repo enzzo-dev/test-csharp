@@ -31,7 +31,7 @@ namespace TesteCSharp.Dominio.Handlers.ExperienceCandidatesHandle
                 return new GenericCommandResult
                 (
                     false,
-                    "Há algum(ns) dados incorretos!",
+                    "Há dados incorretos!",
                     command.Notifications
                 );
             }

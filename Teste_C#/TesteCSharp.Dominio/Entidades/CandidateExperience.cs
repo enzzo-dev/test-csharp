@@ -23,7 +23,7 @@ namespace TesteCSharp.Domains.Entidades
                 .IsNotEmpty(description, "Description", "The description of job could't be empty!")
                 .IsNotNull(salary, "Salary", "The salary of candidate could't be a null value!")
                 .IsNotNull(beginDate, "BeginDate", "Begin Date could't be a null value!")
-                .IsNotNull(endDate, "EndDate", "End Date could't be a null value!")
+
                 .IsNotNull(idCandidate, "IdCandidate", "Candidate have to be specified!")
             );
 
@@ -49,7 +49,7 @@ namespace TesteCSharp.Domains.Entidades
         public Guid IdCandidate { get; set; }
         public Candidates Candidates { get; set; }
 
-        public void UpdateExperience(string company, string job, string description, decimal salary, DateTime beginDate, DateTime endDate)
+        public void UpdateExperience(string company, string job, string description, decimal salary, DateTime beginDate, DateTime endDate, Guid IdExperience)
         {
             AddNotifications(
               new Contract<Notification>()
@@ -60,6 +60,7 @@ namespace TesteCSharp.Domains.Entidades
               .IsNotNull(salary, "Salary", "Salary could't be null")
               .IsNotNull(beginDate, "BeginDate", "Begin date cannot be null")
               .IsNotNull(endDate, "EndDate", "End Date Can't be null")
+              .IsNotNull(IdExperience, "EndDate", "End Date Can't be null")
 
           );
 
@@ -72,6 +73,7 @@ namespace TesteCSharp.Domains.Entidades
                 Salary = salary;
                 BeginDate = beginDate;
                 EndDate = endDate;
+                Id = IdExperience;
                 ModifyDate = DateTime.Now;
             }
         }
