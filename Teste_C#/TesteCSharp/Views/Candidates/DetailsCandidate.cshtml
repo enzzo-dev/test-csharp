@@ -49,58 +49,102 @@
     </dl>
 </div>
 <div>
+    <button style="margin-bottom: 45px " type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+        Atualizar candidato
+    </button>
+
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Atualizar candidato: @Model.Name</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form asp-action="DetailsCandidate" asp-route-id="@Model.Id" class="col-md-4">
+                        <label for="Name" class="control-label">Name</label>
+                        <input style="margin: 20px 0px;width: 300px;height: 35px" id="name" class="form-control" type="text" value="@Model.Name" name="Name"  required/>
+                        <span for="Name" class="text-danger"></span>
+
+                        <label for="Surname" class="control-label">Surname</label>
+                        <input style="margin: 20px 0px;width: 300px;height: 35px" id="surname" class="form-control" type="text" value="@Model.Surname" name="Surname"  required/>
+                        <span for="Surname" class="text-danger"></span>
+
+                        <label for="Birthdate" class="control-label">Birth Date</label>
+                        <input style="margin: 20px 0px;width: 300px;height: 35px" id="birthdate" type="datetime" value="@Model.Birthdate" class="form-control" name="birthdate"  required/>
+                        <span for="Birthdate" class="text-danger"></span>
+
+                        <label for="Email" class="control-label">Email</label>
+                        <input style="margin: 20px 0px;width: 300px;height: 35px" id="email" class="form-control" type="text" value="@Model.Email" name="Email" required/>
+                        <span for="Email" class="text-danger"></span>
+
+                        <input type="hidden" id="idCandidate" value="@Model.Id" name="IdCandidate" />
+
+                        <button style="margin-bottom: 20px; width:100px" id="btnAtualizar" type="submit" class="btn btn-primary">Salvar</button>
+                    </form>
+                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h4 style="margin-bottom: 20px">Deseja cadastrar uma experiência anterior?</h4>
+
+    <label for="Company" class="control-label">Company</label>
+    <input style="margin: 20px 0px;width: 300px;height: 35px" id="company" class="form-control" type="text" value="" name="Company" />
+    <span for="Company" class="text-danger"></span>
+
+    <label for="Job" class="control-label">Job</label>
+    <input style="margin: 20px 0px;width: 300px;height: 35px" id="job" class="form-control" type="text" value="" name="Job" />
+    <span for="Job" class="text-danger"></span>
+
+    <label for="Description" class="control-label">Description</label>
+    <textarea style="margin: 20px 0px;width: 300px;height: 35px" id="description" class="form-control" name="Description"></textarea>
+    <span for="Description" class="text-danger"></span>
+
+    <label for="Salary" class="control-label">Salary</label>
+    <input style="margin: 20px 0px;width: 300px;height: 35px" id="salary" class="form-control" type="number" value="" name="Salary" />
+    <span for="Salary" class="text-danger"></span>
+
+    <label for="BeginDate" class="control-label">Begin Date</label>
+    <input style="margin: 20px 0px;width: 300px;height: 35px" id="beginDate" class="form-control" type="date" value="" name="BeginDate" />
+    <span for="BeginDate" class="text-danger"></span>
+
+    <label for="EndDate" class="control-label">End Date</label>
+    <input style="margin: 20px 0px;width: 300px;height: 35px" id="endDate" class="form-control" type="date" value="" name="EndDate" />
+    <span for="EndDate" class="text-danger"></span>
 
 
-        <label for="Company" class="control-label">Company</label>
-        <input style="margin: 20px 0px;width: 300px;height: 35px" id="company" class="form-control" type="text" value="" name="Company" />
-        <span for="Company" class="text-danger"></span>
 
-        <label for="Job" class="control-label">Job</label>
-        <input style="margin: 20px 0px;width: 300px;height: 35px" id="job" class="form-control" type="text" value="" name="Job" />
-        <span for="Job" class="text-danger"></span>
+    <input type="hidden" id="idCandidate" value="@Html.DisplayFor(model => model.Id)" name="IdCandidate" />
 
-        <label for="Description" class="control-label">Description</label>
-        <textarea style="margin: 20px 0px;width: 300px;height: 35px" id="description" class="form-control" name="Description"></textarea>
-        <span for="Description" class="text-danger"></span>
-
-        <label for="Salary" class="control-label">Salary</label>
-        <input style="margin: 20px 0px;width: 300px;height: 35px" id="salary" class="form-control" type="number" value="" name="Salary" />
-        <span for="Salary" class="text-danger"></span>
-
-        <label for="BeginDate" class="control-label">Begin Date</label>
-        <input style="margin: 20px 0px;width: 300px;height: 35px" id="beginDate" class="form-control" type="date" value="" name="BeginDate" />
-        <span for="BeginDate" class="text-danger"></span>
-
-        <label for="EndDate" class="control-label">End Date</label>
-        <input style="margin: 20px 0px;width: 300px;height: 35px" id="endDate" class="form-control" type="date" value="" name="EndDate" />
-        <span for="EndDate" class="text-danger"></span>
-
-
-
-        <input type="hidden" id="idCandidate" value="@Html.DisplayFor(model => model.Id)" name="IdCandidate" />
-
-        <button style="border:none; padding: 8px 10px" class="btn btn-primary" id="btnAdicionar" type="submit">Cadastrar experiência</button>
+    <button style="border:none; padding: 8px 10px" class="btn btn-primary" id="btnAdicionar" type="submit">Cadastrar experiência</button>
 
     @if (ViewBag.Experiences != null)
     {
-    <div style=" display: flex; flex-direction: row; flex-flow: wrap; width: 100%; height: auto; margin-bottom: 80px;" class="exp">
-        @foreach (var item in ViewBag.Experiences)
-        {
-            <div  style="width: 20rem; margin-top: 50px;margin-right: 30px" class="card">
-                <div class="card-body">
-                    <h5 class="card-title">@item.Company</h5>
-                    <p class="card-text">@item.Job</p>
-                    <p class="card-text">@item.Description</p>
-                    <p class="card-text">@item.Salary</p>
-                    <p class="card-text">@item.BeginDate
-                    <p class="card-text">@item.EndDate</p>
-                    <a asp-action="DetailsExperience" asp-route-id="@item.Id" class="btn btn-primary">Ver mais...</a>
+        <div style=" display: flex; flex-direction: row; flex-flow: wrap; width: 100%; height: auto; margin-bottom: 80px;" class="exp">
+            @foreach (var item in ViewBag.Experiences)
+            {
+                <div style="width: 20rem; margin-top: 50px;margin-right: 30px" class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Company</h5>
+                        <p class="card-text">@item.Job</p>
+                        <p class="card-text">@item.Description</p>
+                        <p class="card-text">R$@item.Salary</p>
+                        <p class="card-text">@item.BeginDate
+                        <p class="card-text">@item.EndDate</p>
+                        <a asp-action="DetailsExperience" asp-route-id="@item.Id" class="btn btn-primary">Ver mais...</a>
+                    </div>
                 </div>
-            </div>
 
-        }
-    </div>
-      
+            }
+        </div>
+
     }
 
 
@@ -134,6 +178,28 @@
                     }
                 });
         });
+
+          $("#btnAtualizar").click(function () {
+            var dataCandidate = {
+                Name: $("#name").val(),
+                Surname: $("#surname").val(),
+                Birthdate: $('#birthdate').val(),
+                Email: $("#email").val(),
+                IdCandidate: $("#idCandidate").val()
+            }
+         var URL2 = '@Url.Action("UpdateCandidate")'
+                $.ajax({
+                    url: URL2,
+                    type: "Patch",
+                    data: dataCandidate,
+                    success: function (dados) {
+                        Name: $("#idCandidate").val('')
+                        Surname: $("#surname").val('')
+                        Birthdate: $('#birthdate').val('')
+                        Email: $("#email").val('')
+                    }
+                })
+        })
 
     </script>
 }

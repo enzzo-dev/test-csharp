@@ -27,12 +27,12 @@ namespace TesteCSharp.Dominio.Commands.Candidates
             ModifyDate = DateTime.Now;
         }
 
-        public Guid IdCandidate { get; private set; }
+        public Guid IdCandidate { get; set; }
 
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        public DateTime Birthdate { get; private set; }
-        public string Email { get; private set; }
+        public string Name { get;  set; }
+        public string Surname { get; set; }
+        public DateTime Birthdate { get;  set; }
+        public string Email { get;  set; }
         public DateTime ModifyDate { get; set; }
 
         public void Validar()

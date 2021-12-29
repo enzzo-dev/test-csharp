@@ -4,10 +4,10 @@
     ViewData["Title"] = "Details of experiences ||";
 }
 
-<h1>Detalhes das experiências do candidato</h1>
+<h2 style="margin-bottom: 20px">Detalhes das experiências do candidato</h2>
 
 <div>
-    <h4>Equipamentos</h4>
+
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -32,7 +32,7 @@
             @Html.DisplayNameFor(model => model.Salary)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Salary)
+           R$ @Html.DisplayFor(model => model.Salary)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.BeginDate)
@@ -61,42 +61,47 @@
     </dl>
 </div>
 <div>
-    <a asp-action="DeleteExperience" asp-route-id="@Model.Id" style="border:none; padding: 8px 10px;margin-bottom: 20px" class="btn btn-primary">Deletar Experiência</a>
 
-    <form action="@Url.Action("UpdateExperience")" method="POST">
+    <h4 style="margin-bottom: 20px">Deseja atualizar esta experiência?</h4>
+
+    <form asp-action="DetailsCandidate" asp-route-id="@Model.IdCandidate" method="POST">
 
         <label for="Company" class="control-label">Company</label>
-        <input style="margin: 20px 0px;width: 300px;height: 35px" id="company" class="form-control" type="text" value="" name="Company" />
+        <input style="margin: 10px 0px;width: 300px;height: 35px" id="company" class="form-control" type="text" value="@Model.Company" name="Company" />
         <span for="Company" class="text-danger"></span>
 
         <label for="Job" class="control-label">Job</label>
-        <input style="margin: 20px 0px;width: 300px;height: 35px" id="job" class="form-control" type="text" value="" name="Job" />
+        <input style="margin: 10px 0px;width: 300px;height: 35px" id="job" class="form-control" type="text" value="@Model.Job" name="Job" />
         <span for="Job" class="text-danger"></span>
 
         <label for="Description" class="control-label">Description</label>
-        <textarea style="margin: 20px 0px;width: 300px;height: 35px" id="description" class="form-control" name="Description"></textarea>
+        <textarea style="margin: 10px 0px;width: 300px;height: 100px;" class="form-control" id="description" name="Description">@Model.Description</textarea>
         <span for="Description" class="text-danger"></span>
 
         <label for="Salary" class="control-label">Salary</label>
-        <input style="margin: 20px 0px;width: 300px;height: 35px" id="salary" class="form-control" type="number" value="" name="Salary" />
+        <input style="margin: 10px 0px;width: 300px;height: 35px" id="salary" class="form-control" type="text" value="@Model.Salary" name="Salary" />
         <span for="Salary" class="text-danger"></span>
 
         <label for="BeginDate" class="control-label">Begin Date</label>
-        <input style="margin: 20px 0px;width: 300px;height: 35px" id="beginDate" class="form-control" type="date" value="" name="BeginDate" />
+        <input style="margin: 10px 0px;width: 300px;height: 35px" id="beginDate" class="form-control" type="datetime" value="@Model.BeginDate" name="BeginDate" />
         <span for="BeginDate" class="text-danger"></span>
 
         <label for="EndDate" class="control-label">End Date</label>
-        <input style="margin: 20px 0px;width: 300px;height: 35px" id="endDate" class="form-control" type="date" value="" name="EndDate" />
+        <input style="margin: 20px 0px;width: 300px;height: 35px" id="endDate" class="form-control" type="datetime" value="@Model.EndDate" name="EndDate" />
         <span for="EndDate" class="text-danger"></span>
 
 
 
         <input type="hidden" id="idCandidate" value="@Html.DisplayFor(model => model.IdCandidate)" name="IdCandidate" />
-        <input type="hidden" id="idExperience" value="@Html.DisplayFor(model => model.Id)" name="IdExperience" />
+        <input type="hidden" id="idExperience" value="@Model.Id" name="IdExperience" />
 
-        <button style="border:none; padding: 8px 10px;margin-bottom: 20px" class="btn btn-primary" id="btnAdicionar" type="submit">Atualizar experiência</button>
+        <div style="display: flex;flex-direction: row;width: 100%;height:auto;">
+            <button style="border:none; padding: 8px 10px;margin-bottom: 20px" class="btn btn-primary" id="btnAdicionar" type="submit">Atualizar experiência</button>
+            <a asp-action="DeleteExperience" asp-route-id="@Model.Id" style="border:none; padding: 8px 10px;margin-bottom: 20px;margin-left:15px" class="btn btn-primary">Deletar Experiência</a>
+        </div>
+
     </form>
-    </div>
+</div>
     <a asp-action="DetailsCandidate" asp-route-id="@Model.IdCandidate">Voltar</a>
 
     @section Scripts{
@@ -109,13 +114,12 @@
                 Description: $("#description").val(),
                 Salary: $("#salary").val(),
                 BeginDate: $("#beginDate").val(),
-                EndDate: $("#endDate").val(),
-                idCandidate: $("#idCandidate").val()
+                EndDate: $("#endDate").val()
             }
          var URL = '@Url.Action("UpdateExperience")'
                 $.ajax({
                     url: URL,
-                    type: "Update",
+                    type: "Patch",
                     data: dataExperience,
                     success: function (dados) {
                             $("#company").val('')

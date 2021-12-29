@@ -29,7 +29,7 @@ namespace TesteCSharp.Dominio.Handlers.ExperienceCandidatesHandle
                 return new GenericCommandResult(false, "Dados Incorretos!", command.Notifications);
             }
 
-            var experienceBuscado = _candidateExperience.FindWithId(command.IdCandidateExperience);
+            var experienceBuscado = _candidateExperience.FindWithId(command.Id);
 
             if(experienceBuscado == null)
             {
@@ -44,7 +44,7 @@ namespace TesteCSharp.Dominio.Handlers.ExperienceCandidatesHandle
                 command.Salary,
                 command.BeginDate,
                 command.EndDate,
-                command.IdCandidateExperience
+                command.Id
             );
 
             if (!experienceBuscado.IsValid)
