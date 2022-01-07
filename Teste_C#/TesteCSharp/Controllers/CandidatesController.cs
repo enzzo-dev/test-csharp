@@ -121,6 +121,15 @@ namespace TesteCSharp.Controllers
             return View(experiences);
         }
 
+        public async Task<IEnumerable<Candidates>> FindCandidates(string name)
+        {
+           
+            var experiences = await _context.Candidates
+                .Where(x => EF.Functions.Like(x.Name, name)).ToListAsync();
+
+            return experiences;
+        }
+
         public IActionResult DeleteExperience(Guid? Id)
         {
             var experienceFinded = _experienceRep.FindWithId(Id);
