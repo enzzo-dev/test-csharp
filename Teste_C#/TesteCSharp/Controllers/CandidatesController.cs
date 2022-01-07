@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -121,13 +122,19 @@ namespace TesteCSharp.Controllers
             return View(experiences);
         }
 
-        public async Task<IEnumerable<Candidates>> FindCandidates(string name)
+        public async Task<IActionResult> FindCandidates(IFormCollection infoCandidate)
         {
-           
-            var experiences = await _context.Candidates
-                .Where(x => EF.Functions.Like(x.Name, name)).ToListAsync();
 
-            return experiences;
+
+            string name = infoCandidate["search"];
+           
+            var candidates = await _context.Candidates
+                .Where(x => EF.Functions.Like(x.Name, $"%{name}%")).ToListAsync();
+
+            ViewBag.candidatesFind = candidates;
+
+            return View();
+        
         }
 
         public IActionResult DeleteExperience(Guid? Id)
