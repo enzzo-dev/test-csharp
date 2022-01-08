@@ -12,23 +12,19 @@
 <p>
     Pesquisar candidatos
 </p>
-    <form asp-action="FindCandidates" method="post">
-        <input type="search" name="search" placeholder="Pesquise um candidato" />
-        <button id="buscar" type="submit">Pesquisar</button>
-    </form>
-   
 
-    <table class="table">
+
+ <table class="table">
         <thead>
             <tr>
                 <th>
-                    Name
+                    Nome
                 </th>
                 <th>
-                    Surname
+                    Sobrenome
                 </th>
                 <th>
-                    BirthDate
+                    Aniversário
                 </th>
                 <th>
                     Email
@@ -39,21 +35,22 @@
         <tbody>
             @foreach (var item in ViewBag.candidatesFind)
             {
+
                 <tr>
                     <td>
                         @item.Name
                     </td>
                     <td>
                         @item.Surname
-                        
+
                     </td>
                     <td>
                         @item.Birthdate
-                       
+
                     </td>
                     <td>
                         @item.Email
-                       
+
 
                     </td>
                     <td>
@@ -66,11 +63,12 @@
                 </tr>
             }
         </tbody>
-    </table>
-    <a asp-action="Index">Voltar</a>
+    </table> 
 
-    @section Scripts{
-        <script>
+<a asp-action="Index">Voltar</a>
+
+@section Scripts{
+    <script>
         $("#deletar").click(function (event) {
             event.preventDefault();
     console.log($("#idCandidate").val())
@@ -91,5 +89,5 @@
         });
 
 
-        </script>
-    }
+    </script>
+}

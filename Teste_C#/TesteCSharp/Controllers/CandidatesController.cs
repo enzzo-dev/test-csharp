@@ -122,18 +122,24 @@ namespace TesteCSharp.Controllers
             return View(experiences);
         }
 
+  
+
         public async Task<IActionResult> FindCandidates(IFormCollection infoCandidate)
         {
 
 
             string name = infoCandidate["search"];
-           
+
+ 
             var candidates = await _context.Candidates
                 .Where(x => EF.Functions.Like(x.Name, $"%{name}%")).ToListAsync();
 
-            ViewBag.candidatesFind = candidates;
+            
+                ViewBag.candidatesFind = candidates;
 
-            return View();
+                return View();
+            
+         
         
         }
 
